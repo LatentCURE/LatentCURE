@@ -1,4 +1,4 @@
-# Nerfies
+# LatentCURE
 
 This repository hosts the static site for LatentCURE: Self-Supervised Data Curation with Latent Predictive Video Representations for Robot Imitation Learning. The page highlights the LatentCURE framework, abstract, and the set of manipulation tasks featured in the project.
 
