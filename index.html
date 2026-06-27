@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="CURE-JEPA: Self-Supervised Data Curation with Predictive Video Priors for Robot Demonstrations.">
-  <meta name="keywords" content="CURE-JEPA, Robot Demonstrations, Data Curation, V-JEPA, Imitation Learning">
+        content="LatentCURE: Self-Supervised Data Curation with Latent Predictive Video Representations for Robot Imitation Learning.">
+  <meta name="keywords" content="LatentCURE, Robot Demonstrations, Data Curation, Latent Predictive Video Representations, Imitation Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CURE-JEPA: Self-Supervised Data Curation with Predictive Video Priors for Robot Demonstrations</title>
+  <title>LatentCURE: Self-Supervised Data Curation with Latent Predictive Video Representations for Robot Imitation Learning</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -33,7 +33,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">CURE-JEPA: Self-Supervised Data Curation with Predictive Video Priors for Robot Demonstrations</h1>
+          <h1 class="title is-1 publication-title">LatentCURE: Self-Supervised Data Curation with Latent Predictive Video Representations for Robot Imitation Learning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">Anonymous RA-L Submission</span>
           </div>
@@ -50,7 +50,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Robot imitation learning increasingly relies on large and diverse datasets, yet data quality remains a major bottleneck for downstream policy learning. Existing data curation methods typically rely on indirect proxies that are not fully aligned with whether demonstrated actions benefit task execution. This letter presents CURE-JEPA, a self-supervised data curation framework that formulates data quality in terms of how actions contribute to task execution, where high-quality actions should drive the task state toward a successful completion while providing smooth and reliable supervision for policy learning. Built on predictive video priors from V-JEPA 2, we model action-conditioned dynamics in latent space and evaluate demonstrations from two criteria: (1) a progress-deficiency criterion for coarse progress estimation and (2) a context-calibrated smoothness criterion for identifying fine-grained action adjustments required by the task. Simulation and real-world experiments show that CURE-JEPA improves average data quality by 21% and downstream policy performance by 14% over state-of-the-art baselines.
+            Imitation learning improves robotic manipulation by utilizing diverse behaviors from demonstrations. However, large-scale datasets inevitably introduce heterogeneity into the action distribution, making data curation essential to efficiently estimate data quality and retain beneficial demonstrations. Existing methods either rely on statistics-based proxies whose closed-loop effects remain unobservable or require costly rollouts with policy-dependent bias. This letter presents LatentCURE, a self-supervised data curation framework built on latent predictive video representations. LatentCURE converts latent representations of demonstrations into computable indicators and introduces two complementary modules: (1) a task progress module that identifies actions with insufficient forward progression, and (2) an action attribution module that identifies actions whose irregularities are unexplained by task-driven state transitions. The two modules produce quality estimates and trajectory-level scores for data curation. Simulation and real-world experiments show that LatentCURE improves average data quality by 21% and downstream policy performance by 14% over state-of-the-art baselines.
           </p>
         </div>
       </div>
@@ -62,13 +62,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Fig. 1: CURE-JEPA Overview</h2>
+        <h2 class="title is-3 has-text-centered">Fig. 1: LatentCURE Overview</h2>
         <figure class="image">
-          <img src="./static/images/interpolate_start.jpg" alt="CURE-JEPA overview figure placeholder.">
+          <img src="./static/images/interpolate_start.jpg" alt="LatentCURE overview figure placeholder.">
         </figure>
         <div class="content has-text-justified">
           <p>
-            CURE-JEPA constructs a self-supervised data curation framework for robot demonstrations, enabling a more direct quality judgment based on predictive video priors.
+            LatentCURE constructs a self-supervised data curation framework for robot imitation learning, enabling rollout-free quality estimation from latent predictive video representations. It converts state-centric latent representations into action-contribution indicators through a task progress module and an action attribution module.
           </p>
         </div>
       </div>
@@ -82,11 +82,11 @@
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered">Fig. 2: Method Pipeline</h2>
         <figure class="image">
-          <img src="./static/images/interpolate_end.jpg" alt="CURE-JEPA method pipeline figure placeholder.">
+          <img src="./static/images/interpolate_end.jpg" alt="LatentCURE method pipeline figure placeholder.">
         </figure>
         <div class="content has-text-justified">
           <p>
-            The pipeline estimates progress deficiency and context-calibrated smoothness from robot demonstrations, then aggregates segment-level scores for trajectory-level data curation.
+            The pipeline estimates task progress score and action attribution score from robot demonstrations, then aggregates segment-level scores into trajectory-level scores for Filter-K and Select-K data curation.
           </p>
         </div>
       </div>
@@ -99,7 +99,7 @@
     <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
     <div class="content has-text-justified">
       <p>
-        We evaluate CURE-JEPA on three real-world robot manipulation tasks. Each task compares a policy trained with all demonstrations against a policy trained after CURE-JEPA curation.
+        We evaluate LatentCURE on three real-world robot manipulation tasks (Sort Blocks, Assemble Gears, and Fold Cloth). Each task compares a policy trained with all demonstrations against a policy trained after LatentCURE curation under Filter-50% and Select-50% settings.
       </p>
     </div>
 
@@ -114,7 +114,7 @@
             </video>
           </div>
           <div class="column">
-            <h4 class="title is-5 has-text-centered">CURE-JEPA Training</h4>
+            <h4 class="title is-5 has-text-centered">LatentCURE Training</h4>
             <video controls muted loop playsinline width="100%">
               <source src="./static/videos/chair-tp.mp4" type="video/mp4">
             </video>
@@ -134,7 +134,7 @@
             </video>
           </div>
           <div class="column">
-            <h4 class="title is-5 has-text-centered">CURE-JEPA Training</h4>
+            <h4 class="title is-5 has-text-centered">LatentCURE Training</h4>
             <video controls muted loop playsinline width="100%">
               <source src="./static/videos/fullbody.mp4" type="video/mp4">
             </video>
@@ -154,7 +154,7 @@
             </video>
           </div>
           <div class="column">
-            <h4 class="title is-5 has-text-centered">CURE-JEPA Training</h4>
+            <h4 class="title is-5 has-text-centered">LatentCURE Training</h4>
             <video controls muted loop playsinline width="100%">
               <source src="./static/videos/mask.mp4" type="video/mp4">
             </video>
@@ -171,7 +171,7 @@
       <div class="column is-8">
         <div class="content has-text-centered">
           <p>
-            CURE-JEPA: Self-Supervised Data Curation with Predictive Video Priors for Robot Demonstrations.
+            LatentCURE: Self-Supervised Data Curation with Latent Predictive Video Representations for Robot Imitation Learning.
           </p>
           <p>
             Anonymous RA-L Submission.
